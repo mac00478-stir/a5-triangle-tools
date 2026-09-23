@@ -1,0 +1,26 @@
+let
+
+  var x: Integer;
+  var y: Integer
+
+in
+
+  begin
+    getint (var x);
+    getint (var y);
+
+    putint (x + y);
+    puteol ();
+    putint (x * y);
+	puteol ();
+
+    if x = y
+    then
+	begin
+	 put ('S'); put ('a'); put ('m'); put ('e'); put ('!');
+	end
+	else
+	begin
+	end
+
+  end

@@ -85,6 +85,7 @@ import triangle.abstractSyntaxTrees.vnames.DotVname;
 import triangle.abstractSyntaxTrees.vnames.SimpleVname;
 import triangle.abstractSyntaxTrees.vnames.SubscriptVname;
 import triangle.abstractSyntaxTrees.vnames.Vname;
+import triangle.abstractSyntaxTrees.commands.RepeatCommand;
 
 public class Parser {
 
@@ -336,6 +337,16 @@ public class Parser {
 			commandAST = new WhileCommand(eAST, cAST, commandPos);
 		}
 			break;
+
+            case REPEAT: {
+                acceptIt();
+                Command cAST = parseSingleCommand();
+                accept(Token.Kind.UNTIL);
+                Expression eAST = parseExpression();
+                finish(commandPos);
+                commandAST = new RepeatCommand(eAST, cAST, commandPos);
+            }
+            break;
 
 		case SEMICOLON:
 		case END:

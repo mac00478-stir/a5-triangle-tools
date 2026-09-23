@@ -108,6 +108,7 @@ import triangle.abstractSyntaxTrees.vnames.DotVname;
 import triangle.abstractSyntaxTrees.vnames.SimpleVname;
 import triangle.abstractSyntaxTrees.vnames.SubscriptVname;
 import triangle.syntacticAnalyzer.SourcePosition;
+import triangle.abstractSyntaxTrees.commands.RepeatCommand;
 
 public final class Checker implements ActualParameterVisitor<FormalParameter, Void>,
 		ActualParameterSequenceVisitor<FormalParameterSequence, Void>, ArrayAggregateVisitor<Void, TypeDenoter>,
@@ -188,6 +189,10 @@ public final class Checker implements ActualParameterVisitor<FormalParameter, Vo
 		return null;
 	}
 
+    @Override
+    public Void visitRepeatCommand(RepeatCommand ast, Void arg) {
+        return null;
+    }
 	// Expressions
 
 	// Returns the TypeDenoter denoting the type of the expression. Does
