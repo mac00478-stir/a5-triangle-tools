@@ -579,10 +579,30 @@ return null;
 			int int1 = (Integer.parseInt(((IntegerExpression) node1).IL.spelling));
 			int int2 = (Integer.parseInt(((IntegerExpression) node2).IL.spelling));
 			Object foldedValue = null;
-			
-			if (o.decl == StdEnvironment.addDecl) {
-				foldedValue = int1 + int2;
-			}
+
+            if (o.decl == StdEnvironment.addDecl) {
+                foldedValue = int1 + int2;
+            }
+
+            if (o.decl == StdEnvironment.subtractDecl) {
+                foldedValue = int1 - int2;
+            }
+
+            if (o.decl == StdEnvironment.multiplyDecl) {
+                foldedValue = int1 * int2;
+            }
+
+            if (o.decl == StdEnvironment.divideDecl) {
+                if (int2 != 0) {
+                    foldedValue = int1 / int2;
+                }
+            }
+
+            if (o.decl == StdEnvironment.moduloDecl) {
+                if (int2 != 0) {
+                    foldedValue = int1 % int2;
+                }
+            }
 
 			if (foldedValue instanceof Integer) {
 				IntegerLiteral il = new IntegerLiteral(foldedValue.toString(), node1.getPosition());
